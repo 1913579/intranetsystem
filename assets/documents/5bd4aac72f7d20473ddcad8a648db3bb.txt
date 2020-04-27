@@ -1,0 +1,85 @@
+https: //www.owasp.org/index.php/Main _...
+
+AppSensor official page:
+http://appsensor.org/
+
+Demo on github:
+https: //github.com/jtmelton/appsensor ...
+
+Encrypt keys:
+https: //www.dailycred.com/article/bcr ...
+
+Some recommended and executed commands:
+#Add a super user
+adduser xaca
+gpasswd -a xaca sudo
+su - xaca
+
+# System update
+sudo apt-get update
+sudo apt-get upgrade
+sudo locale-gen UTF-8
+
+# Memory swap configuration, to optimize memory usage
+sudo fallocate -l 4G / swapfile
+ls -lh / swapfile
+sudo chmod 600 / swapfile
+ls -lh / swapfile
+sudo mkswap / swapfile
+sudo swapon / swapfile
+sudo swapon -s
+free -m
+
+#Install java jdk 8
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa: webupd8team / java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+
+#Installing packet handler
+sudo apt-get install maven
+
+#Variables of surroundings
+sudo echo ~ / .bashrc
+export JAVA_HOME = "/ usr / lib / jvm / java-8-oracle / jre"
+export M2_HOME = "/ usr / share / maven"
+
+# Tomcat server installation
+sudo apt-get install tomcat7
+sudo apt-get install tomcat7-admin
+sudo apt-get install tomcat7-user
+
+# Mysql installation
+sudo apt-get install mysql-server
+
+# Git installation
+sudo apt-get install ant git
+
+#Clone repository appsensor
+git clone http://github.com/jtmelton/appsensor.git
+
+#Submit file around the local server
+scp V1_Initial_Schema_Creation_editado.sql user @ [IP]: / home / user
+
+#Run script to create data base of appsensor de prueba
+/home/xaca/V1_Initial_Schema_Creation_editado.sql
+
+#Install appsensor packages via maven
+cd appsensor /
+mvn -N install
+mvn install
+mvn test
+
+Create three connection windows to the server or to test using background processes
+
+#Grade the route and run the dashboard
+cd appsensor / sample-apps / appsensor-ws-rest-server-with-websocket-boot
+mvn spring-boot: run -DAPPSENSOR_WEB_SOCKET_HOST_URL = ws: // localhost: 8085 / dashboard
+
+#Ingress the route and execute the data generator
+cd appsensor / sample-apps / appsensor-ws-rest-client-boot-data-generator
+mvn spring-boot: run
+
+#Ingress the route and execute the user interface (UI)
+cd appsensor / appsensor-ui
+mvn spring-boot: run -DAPPSENSOR_REST_REPORTING_ENGINE_URL = http: // localhost: 8085 -DAPPSENSOR_CLIENT_APPLICATION_ID_HEADER_NAME = X-Appsensor-Client-Application-Name2 -DAPPSENSOR_CLIENT_APPLICATION_ID_HEPLERATION_ID_HEADER_OR__LAT_ = jdbc: mysql: // localhost / appsensor -Dspring.datasource.username = appsensor_user -Dspring.datasource.password = appsensor_pass

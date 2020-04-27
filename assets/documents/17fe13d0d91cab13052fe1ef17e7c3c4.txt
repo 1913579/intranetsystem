@@ -1,0 +1,16 @@
+Computer => Horizontal
+
+Phones and tables =>  (Horizontal or Vertical)
+
+
+
+
+
+Computer Canvas response similar.
+
+For phones will depend On the Orientation 
+
+1st. ASk user to allow to use full screen and control the horizontal mode.
+2nd. Make the game be always horizontal.
+
+QH2J3ZNR
